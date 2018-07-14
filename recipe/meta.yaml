@@ -28,6 +28,7 @@ requirements:
     - libuuid  # [unix]
     - pcre
     - zeromq
+    - msinttypes  # [win and vc<14]
     - vc  # [win and vc<14]
   run:
     - zeromq
