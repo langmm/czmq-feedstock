@@ -12,19 +12,15 @@ if not exist %LIBRARY_BIN%\libzmq.dll (
     copy /y %LIBRARY_BIN%\libzmq-mt-4*.dll /b %LIBRARY_BIN%\libzmq.dll
 )
 if errorlevel 1 exit 1
-:: for /r "%LIBRARY_BIN%" %%i in (*.dll) do @echo %%i
-:: for /r "%LIBRARY_LIB%" %%i in (*.lib) do @echo %%i
-:: for /r "%LIBRARY_INC%" %%i in (*.h) do @echo %%i
+for /r "%LIBRARY_BIN%" %%i in (*.dll) do @echo %%i
+for /r "%LIBRARY_LIB%" %%i in (*.lib) do @echo %%i
+for /r "%LIBRARY_INC%" %%i in (*.h) do @echo %%i
 
 mkdir build
 cd build
 
-:: Set flags for stdint.h on VS2008
-set "CFLAGS=%CFLAGS% /DZMQ_DEFINED_STDINT"
-set "CXXFLAGS=%CXXFLAGS% /DZMQ_DEFINED_STDINT"
-
 :: Call cmake
-cmake -G %CMAKE_GENERATOR0% -D CMAKE_BUILD_TYPE=%CONFIGURATION% -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D ZMQ_DEFINED_STDINT=1 ..
+cmake -G %CMAKE_GENERATOR0% -D CMAKE_BUILD_TYPE=%CONFIGURATION% -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
 if errorlevel 1 exit 1
 
 :: Using nmake
