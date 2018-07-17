@@ -11,6 +11,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - libzmq2zeromq.patch
+    - missing_stdint_zeromq.patch
 
 build:
   number: 1
@@ -28,7 +29,6 @@ requirements:
     - libuuid  # [unix]
     - pcre
     - zeromq
-    - msinttypes  # [win and vc<14]
   run:
     - zeromq
 
