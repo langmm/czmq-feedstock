@@ -29,8 +29,10 @@ requirements:
     - libuuid  # [unix]
     - pcre
     - zeromq
+    - msinttypes  # [win]
   run:
     - zeromq
+    - msinttypes  # [win]
 
 test:
   commands:
