@@ -41,7 +41,7 @@
  
    target_link_libraries(czmq-static
 -    ${ZEROMQ_LIBRARIES} ${MORE_LIBRARIES}
-+    ${ZeroMQ_LIBRARY} ${MORE_LIBRARIES}
++    ${ZeroMQ_STATIC_LIBRARY} ${MORE_LIBRARIES}
    )
  
    install(TARGETS czmq-static
@@ -50,7 +50,7 @@
      zmakecert
      czmq
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -59,7 +59,7 @@
      zmakecert
      czmq-static
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -68,7 +68,7 @@
      zsp
      czmq
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -77,7 +77,7 @@
      zsp
      czmq-static
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -86,7 +86,7 @@
      test_randof
      czmq
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -95,7 +95,7 @@
      test_randof
      czmq-static
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -104,7 +104,7 @@
      czmq_selftest
      czmq
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
@@ -113,7 +113,7 @@
      czmq_selftest
      czmq-static
 -    ${LIBZMQ_LIBRARIES}
-+    ${ZeroMQ_LIBRARY}
++    ${ZeroMQ_STATIC_LIBRARY}
      ${OPTIONAL_LIBRARIES}
  )
  endif()
