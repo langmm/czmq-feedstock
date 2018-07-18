@@ -25,11 +25,11 @@ requirements:
     - pkg-config  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-   host:
+  host:
     - libuuid  # [unix]
     - pcre
     - zeromq
-   run:
+  run:
     - zeromq
 
 test:
