@@ -20,6 +20,9 @@ if errorlevel 1 exit 1
 :: for /r "%LIBRARY_LIB%" %%i in (*.lib) do @echo %%i
 :: for /r "%LIBRARY_INC%" %%i in (*.h) do @echo %%i
 
+@echo %LIBRARY_PREFIX%\cmake\ZeroMQ\ZeroMQConfig.cmake
+type %LIBRARY_PREFIX%\cmake\ZeroMQ\ZeroMQConfig.cmake
+
 mkdir build
 cd build
 
