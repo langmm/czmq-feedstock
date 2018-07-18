@@ -30,7 +30,7 @@
 +    typedef unsigned __int64 uint64_t;
 +#       endif
 +#       ifndef UINT8_MAX
-+#         define UINT8_MAX 0xFF
++#         define UINT8_MAX _UI8_MAX
 +#       endif
 +#       ifndef UINT16_MAX
 +#         define UINT16_MAX _UI16_MAX
