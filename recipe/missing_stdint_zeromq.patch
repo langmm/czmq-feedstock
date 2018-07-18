@@ -1,5 +1,5 @@
 --- /root/czmq-4.1.1/include/czmq_prelude.h	2018-05-15 11:09:01.000000000 -0500
-+++ /root/czmq-4.1.1/include/czmq_prelude_new.h	2018-07-17 19:03:56.000000000 -0500
++++ /root/czmq-4.1.1/include/czmq_prelude_new.h	2018-07-17 19:57:51.000000000 -0500
 @@ -555,8 +555,8 @@
  #     endif
  #   endif
@@ -11,7 +11,7 @@
      typedef __int8 int8_t;
      typedef __int16 int16_t;
      typedef __int32 int32_t;
-@@ -565,6 +565,30 @@
+@@ -565,6 +565,33 @@
      typedef unsigned __int16 uint16_t;
      typedef unsigned __int32 uint32_t;
      typedef unsigned __int64 uint64_t;
@@ -37,6 +37,9 @@
 +#       endif
 +#       ifndef UINT32_MAX
 +#         define UINT32_MAX _UI32_MAX
++#       endif
++#       ifndef UINT64_MAX
++#         define UINT64_MAX _UI64_MAX
 +#       endif
 +#     endif
  #   endif
