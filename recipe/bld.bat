@@ -8,10 +8,6 @@ if not exist %LIBRARY_LIB%\libzmq.lib (
     copy /y %LIBRARY_LIB%\libzmq-mt-4*.lib /b %LIBRARY_LIB%\libzmq.lib
 )
 if errorlevel 1 exit 1
-if not exist %LIBRARY_BIN%\libzmq.lib (
-    copy /y %LIBRARY_LIB%\libzmq-mt-4*.lib /b %LIBRARY_BIN%\libzmq.lib
-)
-if errorlevel 1 exit 1
 if not exist %LIBRARY_BIN%\libzmq.dll (
     copy /y %LIBRARY_BIN%\libzmq-mt-4*.dll /b %LIBRARY_BIN%\libzmq.dll
 )
