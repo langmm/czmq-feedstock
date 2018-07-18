@@ -13,8 +13,8 @@
 -    list(APPEND MORE_LIBRARIES ${LIBZMQ_LIBRARIES})
 +find_package(ZeroMQ REQUIRED)
 +IF (ZeroMQ_FOUND)
-+    message (STATUS "ZeroMQ_INCLUDE_DIR: ${ZeroMQ_INCLUDE_DIR}")
-+    message (STATUS "ZeroMQ_STATIC_LIBRARY    : ${ZeroMQ_STATIC_LIBRARY}")
++    message (STATUS "ZeroMQ_INCLUDE_DIR   : ${ZeroMQ_INCLUDE_DIR}")
++    message (STATUS "ZeroMQ_STATIC_LIBRARY: ${ZeroMQ_STATIC_LIBRARY}")
 +    include_directories(${ZeroMQ_INCLUDE_DIR})
 +    list(APPEND MORE_LIBRARIES ${ZeroMQ_STATIC_LIBRARY})
      set(pkg_config_libs_private "${pkg_config_libs_private} -lzmq")
@@ -32,7 +32,7 @@
  
    target_link_libraries(czmq
 -    ${ZEROMQ_LIBRARIES} ${MORE_LIBRARIES}
-+    ${ZeroMQ_LIBRARY} ${MORE_LIBRARIES}
++    ${ZeroMQ_STATIC_LIBRARY} ${MORE_LIBRARIES}
    )
  
    install(TARGETS czmq
