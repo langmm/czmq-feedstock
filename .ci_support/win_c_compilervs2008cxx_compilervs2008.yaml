@@ -6,7 +6,7 @@ pin_run_as_build:
   vc:
     max_pin: x
 vc:
-  '9'
+- '9'
 zip_keys:
 - - vc
   - c_compiler
