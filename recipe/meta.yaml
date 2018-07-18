@@ -25,7 +25,6 @@ requirements:
     - pkg-config  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - msinttypes  # [win and vc<14]
   host:
     - libuuid  # [unix]
     - pcre

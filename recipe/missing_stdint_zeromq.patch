@@ -1,19 +1,53 @@
 --- /root/czmq-4.1.1/include/czmq_prelude.h	2018-05-15 11:09:01.000000000 -0500
-+++ /root/czmq-4.1.1/include/czmq_prelude_new.h	2018-07-18 10:35:46.000000000 -0500
-@@ -212,6 +212,16 @@
- #   define __UTYPE_GENERIC
- #endif
- 
-+//- Include stdint.h first to ensure all types initialized
-+
-+#if defined _MSC_VER && _MSC_VER < 1600
-+/* The c99 defining the limit macros (UINT32_MAX for example), says:
-+ * C++ implementations should define these macros only when __STDC_LIMIT_MACROS
-+ * is defined before <stdint.h> is included. */
-+#define __STDC_LIMIT_MACROS
-+#include <stdint.h>
-+#endif
-+
- //- Always include ZeroMQ headers -------------------------------------------
- 
- #include "zmq.h"
++++ /root/czmq-4.1.1/include/czmq_prelude_all.h	2018-07-18 10:34:02.000000000 -0500
+@@ -555,8 +555,8 @@
+ #     endif
+ #   endif
+ #   if ((!defined (__MINGW32__) \
+-    || (defined (__MINGW32__) && defined (__IS_64BIT__))) \
+-    && !defined (ZMQ_DEFINED_STDINT))
++    || (defined (__MINGW32__) && defined (__IS_64BIT__))))
++#     if (!defined (ZMQ_DEFINED_STDINT))
+     typedef __int8 int8_t;
+     typedef __int16 int16_t;
+     typedef __int32 int32_t;
+@@ -565,6 +565,39 @@
+     typedef unsigned __int16 uint16_t;
+     typedef unsigned __int32 uint32_t;
+     typedef unsigned __int64 uint64_t;
++#     elif defined _MSC_VER && _MSC_VER < 1600
++        // Patch defines types that ZMQ does not
++#       ifndef int8_t
++    typedef __int8 int8_t;
++#       endif
++#       ifndef int16_t
++    typedef __int16 int16_t;
++#       endif
++#       ifndef int64_t
++    typedef __int64 int64_t;
++#       endif
++#       ifndef uint64_t
++    typedef unsigned __int64 uint64_t;
++#       endif
++#       ifndef UINT8_MAX
++#         define UINT8_MAX _UI8_MAX
++#       endif
++#       ifndef UINT16_MAX
++#         define UINT16_MAX _UI16_MAX
++#       endif
++#       ifndef UINT32_MAX
++#         define UINT32_MAX _UI32_MAX
++#       endif
++#       ifndef UINT64_MAX
++#         define UINT64_MAX _UI64_MAX
++#       endif
++#       ifndef intmax_t
++    typedef int64_t intmax_t;
++#       endif
++#       ifndef uintmax_t
++    typedef uint64_t uintmax_t;
++#       endif
++#     endif
+ #   endif
+     typedef uint32_t in_addr_t;
+ #   if (!defined (PRId8))
