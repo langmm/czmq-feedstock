@@ -1,5 +1,5 @@
 @setlocal
-set CONFIGURATION=Debug
+set CONFIGURATION=Release
 :: set CMAKE_GENERATOR0="%CMAKE_GENERATOR%"
 set CMAKE_GENERATOR0="NMake Makefiles"
 
