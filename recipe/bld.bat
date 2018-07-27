@@ -16,11 +16,18 @@ if errorlevel 1 exit 1
 :: for /r "%LIBRARY_LIB%" %%i in (*.lib) do @echo %%i
 :: for /r "%LIBRARY_INC%" %%i in (*.h) do @echo %%i
 
+@echo %LIBRARY_PREFIX%\share\cmake\ZeroMQ\ZeroMQConfig.cmake
+type %LIBRARY_PREFIX%\share\cmake\ZeroMQ\ZeroMQConfig.cmake
+@echo %LIBRARY_PREFIX%\share\cmake\ZeroMQ\ZeroMQTargets.cmake
+type %LIBRARY_PREFIX%\share\cmake\ZeroMQ\ZeroMQTargets.cmake
+
 mkdir build
 cd build
 
 :: Call cmake
-cmake -G %CMAKE_GENERATOR0% -D CMAKE_BUILD_TYPE=%CONFIGURATION% -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
+cmake -G %CMAKE_GENERATOR0% ^
+      -D CMAKE_BUILD_TYPE=%CONFIGURATION% ^
+      -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
 if errorlevel 1 exit 1
 
 :: Using nmake

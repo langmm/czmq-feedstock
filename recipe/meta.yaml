@@ -11,18 +11,21 @@ source:
   sha256: {{ sha256 }}
   patches:
     - libzmq2zeromq.patch
+    - missing_stdint_zeromq.patch  # [win and vc<14]
 
 build:
-  number: 0
+  number: 1
+  skip: true  # [vc<14]
 
 requirements:
   build:
-    - toolchain
     - cmake
     - autoconf  # [unix]
     - automake  # [unix]
     - libtool  # [unix]
     - pkg-config  # [unix]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - libuuid  # [unix]
     - pcre
