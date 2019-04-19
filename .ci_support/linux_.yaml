@@ -1,21 +1,23 @@
 c_compiler:
-- vs2015
+- gcc
+c_compiler_version:
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- gxx
+cxx_compiler_version:
+- '7'
+docker_image:
+- condaforge/linux-anvil-comp7
+libuuid:
+- 2.32.1
 pin_run_as_build:
-  vc:
+  libuuid:
     max_pin: x
   zeromq:
     max_pin: x.x
-vc:
-- '14'
 zeromq:
 - 4.3.1
-zip_keys:
-- - vc
-  - c_compiler
-  - cxx_compiler
