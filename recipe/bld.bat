@@ -25,7 +25,7 @@ mkdir build
 cd build
 
 :: Call cmake
-cmake -G %CMAKE_GENERATOR0% ^
+cmake -GNinja ^
       -D CMAKE_BUILD_TYPE=%CONFIGURATION% ^
       -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
 if errorlevel 1 exit 1
