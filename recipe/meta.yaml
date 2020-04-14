@@ -14,12 +14,13 @@ source:
     - missing_stdint_zeromq.patch  # [win and vc<14]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
 
 requirements:
   build:
     - cmake
+    - ninja  # [win]
     - autoconf  # [unix]
     - automake  # [unix]
     - libtool  # [unix]

@@ -25,14 +25,14 @@ mkdir build
 cd build
 
 :: Call cmake
-cmake -G %CMAKE_GENERATOR0% ^
+cmake -GNinja ^
       -D CMAKE_BUILD_TYPE=%CONFIGURATION% ^
       -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
 if errorlevel 1 exit 1
 
-:: Using nmake
-nmake all VERBOSE=1
-nmake install
+:: Using ninja
+ninja all
+ninja install
 
 :: Using Visual studio
 :: if exist czmq.vcxproj (
