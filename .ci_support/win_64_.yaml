@@ -11,7 +11,9 @@ cxx_compiler:
 pin_run_as_build:
   zeromq:
     max_pin: x.x.x
+target_platform:
+- win-64
 vc:
 - '14'
 zeromq:
-- 4.3.2
+- 4.3.3

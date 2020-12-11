@@ -12,9 +12,10 @@ source:
   patches:
     - libzmq2zeromq.patch
     - missing_stdint_zeromq.patch  # [win and vc<14]
+    - 0001-zarmour.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and vc<14]
 
 requirements:
