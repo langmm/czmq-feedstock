@@ -1,6 +1,6 @@
 {% set name = "czmq" %}
-{% set version = "4.2.0" %}
-{% set sha256 = "31185090b500b64855003be2450ced00efa6b58544639acfc68aa13c9ec249f8" %}
+{% set version = "4.2.1" %}
+{% set sha256 = "83457cd32a2c2615b8d7ebcf91b198cb0d8df383a2072b96835ab250164d8a83" %}
 
 package:
   name: {{ name|lower }}
@@ -15,7 +15,7 @@ source:
     - 0001-zarmour.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
@@ -47,7 +47,7 @@ about:
   home: http://czmq.zeromq.org/
   license: MPL-2.0
   license_file: LICENSE
-  summary: 'High-level C binding for 0MQ'
+  summary: High-level C binding for 0MQ
 
   description: |
     czmq is a high-level C binding for the ZeroMQ <http://zeromq.org/>
