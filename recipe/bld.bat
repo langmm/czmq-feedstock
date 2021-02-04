@@ -50,7 +50,7 @@ ninja install
 :: Run tests
 if errorlevel 1 exit 1
 ctest -C "%Configuration%" -V -E zpoller
-ctest -C "%Configuration%" -V -R zpoller --repeat until-pass:3
+ctest -C "%Configuration%" -V -R zpoller --repeat until-pass:10
 if errorlevel 1 exit 1
 
 @endlocal
