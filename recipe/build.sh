@@ -12,14 +12,16 @@ if [[ `uname` == Darwin ]]; then
     # Using autoconf
     ./autogen.sh
     ./configure --prefix="$PREFIX"
+    make all VERBOSE=1
+    make check-verbose
 else
     # Using cmake
     mkdir build
     cd build
     cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$PREFIX ..
+    make all VERBOSE=1
+    ctest -V
 fi
 
 # Make all, run tests, then install
-make all VERBOSE=1
-ctest -V
 make install
