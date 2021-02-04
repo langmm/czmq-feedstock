@@ -1,0 +1,67 @@
+From e102feda81daea5d8755f14aab4610e9c3fd0b0e Mon Sep 17 00:00:00 2001
+From: Meagan Lang <langmm.astro@gmail.com>
+Date: Thu, 4 Feb 2021 10:49:15 -0800
+Subject: [PATCH 2/3] stdint missing from zeromq
+
+---
+ include/czmq_prelude.h | 37 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/include/czmq_prelude.h b/include/czmq_prelude.h
+index 785ae052..55c2dd7f 100644
+--- a/include/czmq_prelude.h
++++ b/include/czmq_prelude.h
+@@ -560,8 +560,8 @@ typedef intptr_t ssize_t;
+ #     endif
+ #   endif
+ #   if ((!defined (__MINGW32__) \
+-    || (defined (__MINGW32__) && defined (__IS_64BIT__))) \
+-    && !defined (ZMQ_DEFINED_STDINT))
++    || (defined (__MINGW32__) && defined (__IS_64BIT__))))
++#     if (!defined (ZMQ_DEFINED_STDINT))
+     typedef __int8 int8_t;
+     typedef __int16 int16_t;
+     typedef __int32 int32_t;
+@@ -570,6 +570,39 @@ typedef intptr_t ssize_t;
+     typedef unsigned __int16 uint16_t;
+     typedef unsigned __int32 uint32_t;
+     typedef unsigned __int64 uint64_t;
++#     elif defined _MSC_VER && _MSC_VER < 1600
++        // Patch defines types that ZMQ does not
++#       ifndef int8_t
++    typedef __int8 int8_t;
++#       endif
++#       ifndef int16_t
++    typedef __int16 int16_t;
++#       endif
++#       ifndef int64_t
++    typedef __int64 int64_t;
++#       endif
++#       ifndef uint64_t
++    typedef unsigned __int64 uint64_t;
++#       endif
++#       ifndef UINT8_MAX
++#         define UINT8_MAX _UI8_MAX
++#       endif
++#       ifndef UINT16_MAX
++#         define UINT16_MAX _UI16_MAX
++#       endif
++#       ifndef UINT32_MAX
++#         define UINT32_MAX _UI32_MAX
++#       endif
++#       ifndef UINT64_MAX
++#         define UINT64_MAX _UI64_MAX
++#       endif
++#       ifndef intmax_t
++    typedef int64_t intmax_t;
++#       endif
++#       ifndef uintmax_t
++    typedef uint64_t uintmax_t;
++#       endif
++#     endif
+ #   endif
+     typedef uint32_t in_addr_t;
+ #   if (!defined (PRId8))
+-- 
+2.26.2
+
