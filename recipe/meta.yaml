@@ -10,11 +10,12 @@ source:
   url: https://github.com/zeromq/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - libzmq2zeromq.patch
-    - missing_stdint_zeromq.patch  # [win and vc<14]
+    - 0001-cmake-libzmq-to-zeromq.patch
+    - 0002-stdint-missing-from-zeromq.patch  # [win and vc<14]
+    - 0003-bug-on-macos.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
 
 requirements:
